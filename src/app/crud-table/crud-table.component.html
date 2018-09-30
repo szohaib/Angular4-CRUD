@@ -1,0 +1,47 @@
+<p (click)="addNew()">Add New</p>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Age</th>
+      <th class="text-center">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="text-left" *ngFor="let person of persons ; let i = index">
+      <td>{{person.name}}</td>
+      <td>{{person.age}}</td>
+      <td>
+        <button class="btn btn-primary" (click)="onEdit(i)">Edit </button>
+      </td>
+      <td>
+        <button class="btn btn-danger" (click)="onDelete(i)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="row" *ngIf="showAddBox">
+  <div class="col-md-3">
+    <input class="form-control" [(ngModel)]="addedAge" placeholder="Age">
+  </div>
+  <div class="col-md-3">
+    <input class="form-control" [(ngModel)]="addedName" placeholder="Name">
+  </div>
+  <div class="col-md-6">
+    <button class="btn btn-info" (click)="saveNew()">Save</button>
+  </div>
+</div>
+
+<div class="row" *ngIf="showEditBox ">
+  <div class="col-md-3">
+    <input class="form-control" [(ngModel)]="selectedPerson.name" placeholder="name">
+  </div>
+  <div class="col-md-3">
+    <input class="form-control" [(ngModel)]="selectedPerson.age" placeholder="age">
+  </div>
+  <div class="col-md-6">
+    <button class="btn btn-info" (click)="saveEditedPerson()">Save</button>
+  </div>
+</div>
